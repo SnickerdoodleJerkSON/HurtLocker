@@ -9,7 +9,7 @@ public class nameTest {
     @Test
     public void testNameMethod() {
         //Given
-        String input = "Name";
+        String input = "name";
         HashMap<String, String> foodNames = new HashMap<String, String>();
         //When
         Comparator<String> matches = input.CASE_INSENSITIVE_ORDER;
@@ -19,15 +19,13 @@ public class nameTest {
     }
 
     @Test
-    public void testPriceMethod() {
+    public void testSymbolsMethod() {
         //Given
-        String input = "Price";
-
+        String input = ":, @, ^, *, %";
         //When
-        Comparator<String> matches = input.CASE_INSENSITIVE_ORDER;
-        // int occurrences = ?
+        boolean expected = input.contains(":");
         //Then
-        Assert.assertTrue(true);
+        Assert.assertTrue(expected);
     }
 
 
