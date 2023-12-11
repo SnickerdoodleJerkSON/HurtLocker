@@ -53,5 +53,14 @@ public class HurtLocker {
         return counter;   //returns the number of exceptions that have empty names and prices after
     }
 
+    public Integer countApples() {
+
+        Matcher matcher = Pattern.compile("[aA][pP][pP][lL][eE]").matcher(item);
+                                                // Finding every word for apple
+        int counter = 0;
+        while (matcher.find()) {
+            counter++;
+        } return counter;
+    }
 }
 

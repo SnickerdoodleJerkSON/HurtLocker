@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-public class priceTest {
+public class PriceTest {
     HurtLocker foods;
     HashMap<String,Integer> map;
 

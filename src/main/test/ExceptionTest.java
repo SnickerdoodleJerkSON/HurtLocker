@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class exceptionTest {
+public class ExceptionTest {
 
     @Test
     public void testExceptionCount1(){
