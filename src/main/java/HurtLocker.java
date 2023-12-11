@@ -35,20 +35,23 @@ public class HurtLocker {
     }
 
     public Integer countPrices(HashMap<String, Integer> prices) {
+        // counter for each food item -> number appearances for a price
         int counter = 0;
         for (String p : prices.keySet()) {
             counter += prices.get(p);
-        }
+        } //
         return counter;
     }
 
     public Integer exceptionCount() {  // exceptions for empty names and prices for items
         int counter = 0;
-        Matcher match = Pattern.compile("(...e:[^a-zA-Z]) | (....e:[^0-9])").matcher(item);
-        while (match.find()){   // need to figure out regex for empty name and prices
+        Matcher match = Pattern.compile("(n..e:[^a-zA-Z])|(;p...e:[^0-9])").matcher(item);
+        while (match.find()){                // name : DOES NOT FOLLOW A LETTER AFTER
+                                                // OR price: DOES NOT FOLLOW A NUMBER AFTER
             counter++;
         }
-        return counter;
+        return counter;   //returns the number of exceptions that have empty names and prices after
     }
+
 }
 
