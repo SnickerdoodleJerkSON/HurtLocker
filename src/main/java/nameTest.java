@@ -3,7 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.util.Comparator;
 
-public class NameRegexTest {
+public class nameTest {
 
     @Test
     public void testNameMethod() {
