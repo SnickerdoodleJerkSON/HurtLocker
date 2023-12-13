@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,6 +45,6 @@ public class ProductParser {
     }
 
     public static List<String> parseProductLines(String soureFile) {
-        return null;
+        return Arrays.asList(soureFile.split("##"));
     }
 }
