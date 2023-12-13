@@ -18,14 +18,25 @@ public class nameTest {
         Assert.assertEquals(expected, name);
 
     }
+    @Test
+    public void testExtractNameFromProductLine2() {
+        //Given
+        String input = "naMe:milk;price:3.23;type:Food;expiration:1/25/2016##"; // string i am searching through. I'm trying to find word 'milk'
+        String expected = "Milk";
+        //When
+        String name = ProductParser.extractNameFromProductLine(input);
+        //Then
+        Assert.assertEquals(expected, name);
+
+    }
 
     @Test
     public void testExtractPriceFromProductLine() {
         //Given
         String input = "naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##"; // string i am searching through. I'm trying to find word 'milk'
-        String expected = "3.23";
+        Double expected = 3.23;
         //When
-        String price = ProductParser.extractPriceFromProductLine(input);
+        Double price = ProductParser.extractPriceFromProductLine(input);
         //Then
         Assert.assertEquals(expected, price);
 
@@ -97,15 +108,9 @@ public class nameTest {
 
     @Test
     public void testProductLineParse() {
-        String soureFile = "naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##\n" +
-                "naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##\n" +
-                "NAMe:BrEAD;price:1.23;type:Food;expiration:2/25/2016##\n" +
-                "naMe:MiLK;price:3.23;type:Food^expiration:1/11/2016##\n" +
-                "naMe:Cookies;price:2.25;type:Food%expiration:1/25/2016##\n" +
-                "naMe:CoOkieS;price:2.25;type:Food*expiration:1/25/2016##\n" +
-                "naMe:COokIes;price:2.25;type:Food;expiration:3/22/2016##\n";
-        List<String>productLines = ProductParser.parseProductLines(soureFile);
-        Assert.assertEquals(28, productLines);
+        String sourceFile = "naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##NAMe:BrEAD;price:1.23;type:Food;expiration:2/25/2016##naMe:MiLK;price:3.23;type:Food^expiration:1/11/2016##naMe:Cookies;price:2.25;type:Food%expiration:1/25/2016##naMe:CoOkieS;price:2.25;type:Food*expiration:1/25/2016##naMe:COokIes;price:2.25;type:Food;expiration:3/22/2016##naMe:COOkieS;price:2.25;type:Food;expiration:1/25/2016##NAME:MilK;price:3.23;type:Food;expiration:1/17/2016##naMe:MilK;price:1.23;type:Food!expiration:4/25/2016##naMe:apPles;price:0.25;type:Food;expiration:1/23/2016##naMe:apPles;price:0.23;type:Food;expiration:5/02/2016##NAMe:BrEAD;price:1.23;type:Food;expiration:1/25/2016##naMe:;price:3.23;type:Food;expiration:1/04/2016##naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##naME:BreaD;price:1.23;type:Food@expiration:1/02/2016##NAMe:BrEAD;price:1.23;type:Food@expiration:2/25/2016##naMe:MiLK;priCe:;type:Food;expiration:1/11/2016##naMe:Cookies;price:2.25;type:Food;expiration:1/25/2016##naMe:Co0kieS;pRice:2.25;type:Food;expiration:1/25/2016##naMe:COokIes;price:2.25;type:Food;expiration:3/22/2016##naMe:COOkieS;Price:2.25;type:Food;expiration:1/25/2016##NAME:MilK;price:3.23;type:Food;expiration:1/17/2016##naMe:MilK;priCe:;type:Food;expiration:4/25/2016##naMe:apPles;prIce:0.25;type:Food;expiration:1/23/2016##naMe:apPles;pRice:0.23;type:Food;expiration:5/02/2016##NAMe:BrEAD;price:1.23;type:Food;expiration:1/25/2016##naMe:;price:3.23;type:Food^expiration:1/04/2016##";
+        List<String>productLines = ProductParser.parseProductLines(sourceFile);
+        Assert.assertEquals(28, productLines.size());
     }
 
     // setname
