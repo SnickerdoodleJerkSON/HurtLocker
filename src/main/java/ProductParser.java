@@ -45,7 +45,8 @@ public class ProductParser {
     }
 
     public static String extractExpirationFromProductLine(String input) {
-        String regexString = "expiration:([^a-zA-Z:%@#^*;]+)";
+        String regexString = "expiration:([^a-zA-Z:%@#^*;]+)"; // 12312425 /
+        // [eE][xX][pP][iI][rR]
         Pattern pattern = Pattern.compile(regexString);
         Matcher matcher = pattern.matcher(input);
         if (matcher.find()){
@@ -56,6 +57,17 @@ public class ProductParser {
 
     public static List<String> parseProductLines(String sourceFile) {
         return Arrays.asList(sourceFile.split("##"));
+        // List String
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
+
+        // item1, item2,item3, ","
+        // We have all the methods to extract this string.
     }
 
 
@@ -96,7 +108,6 @@ public class ProductParser {
             }
         } return mapList;
     }
-
 
     public static String stringMaker(){
         StringBuilder result = new StringBuilder();
