@@ -105,7 +105,7 @@ public class ProductParser {
 
             for (Map.Entry<String, Integer> innerEntry : innerMap.entrySet()) {
                 if(!innerEntry.getKey().contains(".") && !innerEntry.getKey().equals("Error")) {
-                    result.append("   \n" + "Name:   " + innerEntry.getKey() + "    \t " + "seen: " + innerEntry.getValue() + " times" + "\n=============" + "\t\t ============");
+                    result.append("   \n" + "Name:   " + innerEntry.getKey().substring(0,1).toUpperCase() + innerEntry.getKey().substring(1) +  "    \t " + "seen: " + innerEntry.getValue() + " times" + "\n=============" + "\t\t ============");
                 } else if (innerEntry.getKey().contains(".")) {
                     result.append("   \n" + "Price:   " + innerEntry.getKey() + "    \t " + "seen: " + innerEntry.getValue() + " times" + "\n-------------" + "\t\t -------------");
                 } else {
