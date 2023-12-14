@@ -45,7 +45,7 @@ public class ProductParser {
     }
 
     public static String extractExpirationFromProductLine(String input) {
-        String regexString = "expiration:([^a-zA-Z:%@#^*;]+)"; // 12312425 /
+        String regexString = "[eE][xX][pP][iI][rR][aA][tT][iI][oO][nN]:([^a-zA-Z:%@#^*;]+)"; // 12312425 /
         // [eE][xX][pP][iI][rR]
         Pattern pattern = Pattern.compile(regexString);
         Matcher matcher = pattern.matcher(input);
