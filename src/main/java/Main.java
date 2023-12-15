@@ -17,78 +17,33 @@ public class Main {
         String output = (new Main()).readRawDataToString();
 
         List<String> parsedOutPut = ProductParser.parseProductLines(output);
-        //parse method ##
-
-        // raw date looks like this
-        // //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##//naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##//naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##//naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##//naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##//naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##
-
-        //paredOutPut
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-
-
-
-        int errorCounter = 0;
+        //Separates the RawData into a list to easily extract using the methods in ProductParser
 
         List<Product> listProduct = new ArrayList<>();
+        //Used later to add all our products into
 
         for (String str : parsedOutPut) {
             Product product = new Product();
-            //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
 
             product.setName(ProductParser.extractNameFromProductLine(str));
-            //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-            //Setting a new name for the product. How do we get that product name?
-
-            //product.setname("Milk");
-
             product.setPrice(ProductParser.extractPriceFromProductLine(str));
-
             product.setType(ProductParser.extractTypeFromProductLine(str));
-
             product.setExpiration(ProductParser.extractExpirationFromProductLine(str));
-
-            //HashMap has a key and value.
-
-            //Map<String, Map<String, Integer>>
-            //milk -> milk - 3
-
-            //     -> 3.25 - 2
-            //     -> 3.42 - 2
-
-
-            // Outter HashMap (1)
-            // KEYs: " Milk'   "Bread"  "Cookies"   "Apples"
-            // KEY and VALUE: INNER HASHMAP
-
-            // PRICE, NAME - I want a counter for those.
-            // Inner HashMap (2)
-
 
             if (product.getName() != null && product.getName().equals("Co0kieS")) {
                 product.setName("cookies");
+                // used regex earlier to extract Co0kieS from RawData, setting it to the correct format to cookies.
             }
-
-            listProduct.add(product);
-            if (product.getName() == null || product.getPrice() == null || product.getType() == null || product.getExpiration() == null) {
-                errorCounter++;
-            }
+            listProduct.add(product);  // For each string we are creating a new product, adding all the products into ArrayList
         }
-        ProductParser.getCounter(listProduct);
+        ProductParser.getProductsAndCounter(listProduct);
+        // Places products into a linkedHashMap
         toFile();
+        // Write to a new file "results.txt" using the stringMaker method
     }
 
     public static void toFile() throws IOException {
-        try {
+        try {  //Writes an output file.
             FileWriter file = new FileWriter("results.txt");
 
             file.write(ProductParser.stringMaker());
@@ -99,13 +54,4 @@ public class Main {
         }
     }
 }
-
-
-
-            // Milk, Bread, Cookies, Apples
-            //  1      2      3        4
-
-
-            //key 1 <- HashMap<Integer String>
-            //The value can be any data structure, the key always has to be an object.
 

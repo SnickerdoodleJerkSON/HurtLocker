@@ -113,18 +113,4 @@ public class nameTest {
         Assert.assertEquals(28, productLines.size());
     }
 
-    // setname
-
-    // Price
-    // setname
-    // get name
-
-    // Type
-    // setname
-    // get name
-
-    // Expiration
-    // setname
-    // get name
-
 }

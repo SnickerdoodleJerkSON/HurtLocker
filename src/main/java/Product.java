@@ -4,18 +4,15 @@ public class Product {
     String type;
     String expiration;
 
-    public Product(){
-        this.name = name;
-        this.price = price;
-        this.type  = type;
-        this.expiration = expiration;
+    public Product() {
+        //Nullary constructor
+        this.name = "";
+        this.price = 0.00;
+        this.type  = "";
+        this.expiration = "";
     }
     public void setName(String name) {
         this.name = name;
-        //Pet Collections, Pet, Dogs, Cats
-
-        //naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##,
-
     }
 
     public String getName() {
@@ -44,5 +41,4 @@ public class Product {
     public String getExpiration() {
         return this.expiration;
     }
-
 }
