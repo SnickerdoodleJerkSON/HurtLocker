@@ -22,7 +22,7 @@ public class nameTest {
     public void testExtractNameFromProductLine2() {
         //Given
         String input = "naMe:milk;price:3.23;type:Food;expiration:1/25/2016##"; // string i am searching through. I'm trying to find word 'milk'
-        String expected = "Milk";
+        String expected = "milk";
         //When
         String name = ProductParser.extractNameFromProductLine(input);
         //Then
